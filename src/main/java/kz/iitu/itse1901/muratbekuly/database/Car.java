@@ -1,8 +1,6 @@
 package kz.iitu.itse1901.muratbekuly.database;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.*;
 
 import javax.persistence.Entity;
@@ -12,7 +10,8 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

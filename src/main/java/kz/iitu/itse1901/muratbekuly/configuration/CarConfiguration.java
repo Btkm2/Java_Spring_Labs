@@ -1,25 +1,25 @@
-package kz.iitu.itse1901.muratbekuly.configuration;
-
-import kz.iitu.itse1901.muratbekuly.service.CarServices.CarService;
-import kz.iitu.itse1901.muratbekuly.service.CarServices.CarServiceInterface;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.support.GenericApplicationContext;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
+//package kz.iitu.itse1901.muratbekuly.configuration;
+//
+//import kz.iitu.itse1901.muratbekuly.service.CarServices.CarService;
+//import kz.iitu.itse1901.muratbekuly.service.CarServices.CarServiceInterface;
+//import org.springframework.beans.factory.BeanFactory;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.context.annotation.Lazy;
+//import org.springframework.context.annotation.Scope;
+//import org.springframework.context.support.GenericApplicationContext;
+//
+//import javax.annotation.PostConstruct;
+//import javax.annotation.PreDestroy;
+//
 //@Configuration
 //public class CarConfiguration {
 //    @Bean(name = "CarService")
 //    @Lazy
 //    @Scope("prototype")
-//    public CarServiceInterface service(){
-//        return new CarService();
-//    }
+////    public CarServiceInterface service(){
+////        return new CarService();
+////    }
 //
 //    @PostConstruct
 //    public void init(){

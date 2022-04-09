@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 
-@Repository
+//@Repository
 @Transactional
 public class CarRepositoryImplementation{
 
@@ -30,9 +30,9 @@ public class CarRepositoryImplementation{
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Car> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("from Car ", Car.class).getResultList();
-    }
+//    public List<Car> findAll() {
+//        return sessionFactory.getCurrentSession().createQuery("from Car ", Car.class).getResultList();
+//    }
 
 
     public Car findCarById(Long id) {
