@@ -19,7 +19,7 @@ public class AppController {
     @Autowired //Field-injection
     private CarService carService;
 
-    @Scheduled(fixedRate = 10)
+    @Scheduled(fixedRate = 1)
     @GetMapping("/getCars")
     public List<Car> getALlCars(){
         return carService.getALlCars();

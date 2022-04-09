@@ -34,6 +34,7 @@ public class CarService implements CarServiceInterface{
     }
 
     @Override
+//    @Scheduled(cron = "${schedule.work}")
     public List<Car> getALlCars() {
         return carRepository.findAll();
     }
