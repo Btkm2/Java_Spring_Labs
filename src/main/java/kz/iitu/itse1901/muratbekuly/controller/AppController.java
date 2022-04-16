@@ -4,6 +4,7 @@ import kz.iitu.itse1901.muratbekuly.database.*;
 import kz.iitu.itse1901.muratbekuly.service.CarServices.*;
 import kz.iitu.itse1901.muratbekuly.service.UserServices.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,8 @@ public class AppController {
     private CarService carService;
 
     @Scheduled(fixedRate = 1)
+//    @Scheduled(fixedDelay = 10, initialDelay = 2000)
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/getCars")
     public List<Car> getALlCars(){
         return carService.getALlCars();
