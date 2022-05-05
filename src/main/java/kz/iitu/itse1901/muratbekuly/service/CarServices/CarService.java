@@ -3,6 +3,8 @@ package kz.iitu.itse1901.muratbekuly.service.CarServices;
 import kz.iitu.itse1901.muratbekuly.database.*;
 import kz.iitu.itse1901.muratbekuly.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -34,14 +36,20 @@ public class CarService implements CarServiceInterface{
     }
 
     @Override
-    @Scheduled(cron = "${schedule.work}")
+//    @Scheduled(cron = "${schedule.work}")
     public List<Car> getALlCars() {
         return carRepository.findAll();
     }
 
-    public Car AddCar(Car car){
-        return carRepository.save(car);
+    @Override
+    public ResponseEntity<Car> addCar(Car car) {
+        Car save_car = carRepository.save(car);
+        return new ResponseEntity<Car>(save_car, HttpStatus.CREATED);
     }
+
+//    public Car AddCar(Car car){
+//        return carRepository.save(car);
+//    }
 
     public Car GetCarById(Long id){
         return carRepository.findById(id).get();
@@ -51,3 +59,7 @@ public class CarService implements CarServiceInterface{
         return "It's Car Bean";
     }
 }
+
+/*
+
+ */

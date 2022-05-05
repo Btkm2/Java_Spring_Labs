@@ -26,4 +26,16 @@ public class Car  {
     private String year;
     private Integer price;
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", Model='" + Model + '\'' +
+                ", Milage=" + Milage +
+                ", condition='" + condition + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", year='" + year + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

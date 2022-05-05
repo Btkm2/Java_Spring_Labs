@@ -2,15 +2,15 @@ package kz.iitu.itse1901.muratbekuly.controller;
 
 import kz.iitu.itse1901.muratbekuly.database.*;
 import kz.iitu.itse1901.muratbekuly.service.CarServices.*;
-import kz.iitu.itse1901.muratbekuly.service.UserServices.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.jms.core.*;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @EnableScheduling
@@ -20,24 +20,42 @@ public class AppController {
     @Autowired //Field-injection
     private CarService carService;
 
-    @Scheduled(fixedRate = 1)
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+//    @Scheduled(fixedRate = 1)
 //    @Scheduled(fixedDelay = 10, initialDelay = 2000)
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     @GetMapping("/getCars")
     public List<Car> getALlCars(){
         return carService.getALlCars();
     }
 
+//    @PostMapping("/addCars")
+//    public Car AddCars(@RequestBody Car car){
+//        return carService.AddCar(car);
+//    }
+
     @PostMapping("/addCars")
-    public Car AddCars(@RequestBody Car car){
-        return carService.AddCar(car);
-    }
+    public ResponseEntity<Car> addCar(@RequestBody Car car){ return carService.addCar(car);}
 
     @GetMapping("/findCarById")
     public Car GetCarsById(@RequestParam Long id){
         return carService.GetCarById(id);
     }
 
+    @PostMapping("/MSG")
+    public void send(@RequestBody Car car){
+        jmsTemplate.convertAndSend("CarQueue",car);
+    }
+
+    @GetMapping("/GetMSG")
+    @JmsListener(destination = "CarQueue")
+    public String getMSG(Car car){
+//        jmsTemplate.receiveAndConvert("CarQueue");
+        return car.toString();
+    }
     //User
 ////    @Autowired
 //    private UserService userService;
